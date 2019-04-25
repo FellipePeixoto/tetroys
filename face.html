@@ -16,6 +16,31 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+   
+   function logou(resp){
+	console.log(resp);
+	if(resp.authResponse){
+		alert('logado');
+	}
+	else{
+		alert('n logado');
+	}
+   }
+   
+   function logar(){
+	FB.login(logou, {scope: 'user_friends', return_scopes: true});
+	}
+   
+   function checkLogin(){
+		FB.getLoginStatus( (resp) => {
+			alert(resp.status);
+		});
+   }
+   
 </script> 
 </head>
+<body>
+	<button onclick="logar()">lgn</button>
+	<button onclick="checkLogin()">chk</button>
+</body>
 </html>
